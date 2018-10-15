@@ -451,6 +451,25 @@ Page {
                     // replace '*' by ','. don't do this if this itself is the first character
                     input.remove(input.cursorPosition - 1, input.cursorPosition)
                     input.insert(input.cursorPosition, ",")
+                } else if (dialNumber.length == 1) {
+                    // check for programmed speed dial numbers and load it
+                    var speedDialNum = mainView.getSpeedDial(keycode);
+                    if (speedDialNum.length > 0) {
+                        input.remove(0, 1);
+                        console.log("Loading " + speedDialNum + " from speed dial")
+                        input.insert(input.cursorPosition, speedDialNum);
+                    }
+                } else {
+                    // holding one of the digits down. let's try saving it
+                    // in the keycode that's pressed.
+                    input.remove(input.cursorPosition - 1, input.cursorPosition)
+
+                    var speedDialNum = mainView.getSpeedDial(keycode);
+                    if (speedDialNum.length > 0) {
+                        console.log("old saved number " + speedDialNum);
+                    }
+                    console.log("saving " + dialNumber + " in " + keycode);
+                    mainView.setSpeedDial(keycode, dialNumber)
                 }
             }
         }

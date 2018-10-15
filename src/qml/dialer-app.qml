@@ -138,6 +138,52 @@ MainView {
         property string lastCalledPhoneNumber: ""
     }
 
+    Settings {
+        id: speedDialSettings
+        category: "SpeedDial"
+        property string num2: ""
+        property string num3: ""
+        property string num4: ""
+        property string num5: ""
+        property string num6: ""
+        property string num7: ""
+        property string num8: ""
+        property string num9: ""
+        property string num0: ""
+    }
+
+    function getSpeedDial(key) {
+        switch (key) {
+            case Qt.Key_2: return speedDialSettings.num2;
+            case Qt.Key_3: return speedDialSettings.num3;
+            case Qt.Key_4: return speedDialSettings.num4;
+            case Qt.Key_5: return speedDialSettings.num5;
+            case Qt.Key_6: return speedDialSettings.num6;
+            case Qt.Key_7: return speedDialSettings.num7;
+            case Qt.Key_8: return speedDialSettings.num8;
+            case Qt.Key_9: return speedDialSettings.num9;
+            case Qt.Key_0: return speedDialSettings.num0;
+            default:
+                console.log("Unknown key " + key + " for speed dial");
+        }
+    }
+
+    function setSpeedDial(keycode, dialNum) {
+        switch (keycode) {
+            case Qt.Key_2: speedDialSettings.num2 = dialNum; break;
+            case Qt.Key_3: speedDialSettings.num3 = dialNum; break;
+            case Qt.Key_4: speedDialSettings.num4 = dialNum; break;
+            case Qt.Key_5: speedDialSettings.num5 = dialNum; break;
+            case Qt.Key_6: speedDialSettings.num6 = dialNum; break;
+            case Qt.Key_7: speedDialSettings.num7 = dialNum; break;
+            case Qt.Key_8: speedDialSettings.num8 = dialNum; break;
+            case Qt.Key_9: speedDialSettings.num9 = dialNum; break;
+            case Qt.Key_0: speedDialSettings.num0 = dialNum; break;
+            default:
+                console.log("Unknown keycode " + keycode + " for speed dial");
+        }
+    }
+
     PhoneUtils {
         id: phoneUtils
     }
