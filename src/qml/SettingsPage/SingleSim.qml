@@ -46,6 +46,15 @@ Column {
     ListItem.Divider {}
 
     ListItem.Standard {
+        objectName: "speedDial"
+        text: i18n.tr("Speed dial")
+        progression: true
+        onClicked: pageStack.push(Qt.resolvedUrl("SpeedDial.qml"), {})
+    }
+
+    ListItem.Divider {}
+
+    ListItem.Standard {
         objectName: "simServices"
         // TRANSLATORS: %1 is the name of the (network) carrier
         text: i18n.tr("%1 Services").arg(carrierString)
